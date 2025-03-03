@@ -1,0 +1,17 @@
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-image: url(/assets/hero/background.jpg);
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 40rem;
+
+    h3 {
+        color: #5E9A13;
+        font-weight: 500;
+        margin-bottom: 6rem;
+    }
+}

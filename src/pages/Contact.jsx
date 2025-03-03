@@ -1,8 +1,10 @@
+import PageHeader from "../components/PageHeader/PageHeader"
+
 function ContactPage() {
 
     return (
         <div>
-            <h1>CONTACT</h1>
+            <PageHeader title="Kontakt Gowala" text="Vores kontaktinformationer" />
         </div>
     )
 }

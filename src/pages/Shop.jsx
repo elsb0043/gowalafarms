@@ -1,8 +1,10 @@
+import PageHeader from "../components/PageHeader/PageHeader"
+
 function ShopPage() {
 
     return (
         <div>
-            <h1>SHOP</h1>
+            <PageHeader title="Gowala Shopping" text="Vi er taknemlige for dit bidrag" />
         </div>
     )
 }

@@ -1,8 +1,10 @@
+import PageHeader from "../components/PageHeader/PageHeader"
+
 function CheckoutPage() {
 
     return (
         <div>
-            <h1>CHECKOUT</h1>
+            <PageHeader title="Gowala Shopping" text="Færdiggør din bestilling" />
         </div>
     )
 }

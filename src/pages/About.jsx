@@ -1,8 +1,10 @@
+import PageHeader from "../components/PageHeader/PageHeader"
+
 function AboutPage() {
 
     return (
         <div>
-            <h1>ABOUT</h1>
+            <PageHeader title="Om Gowala Farms" text="Vores kvalitet og service" />
         </div>
     )
 }

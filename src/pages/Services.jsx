@@ -1,8 +1,10 @@
+import PageHeader from "../components/PageHeader/PageHeader"
+
 function ServicesPage() {
 
     return (
         <div>
-            <h1>SERVICES</h1>
+            <PageHeader title="Gowala Tilbyder" text="Hvad vi tilbyder vores forbrugere" />
         </div>
     )
 }

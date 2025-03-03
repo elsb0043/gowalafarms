@@ -1,8 +1,10 @@
+import Slider from "../components/Swiper/Swiper"
+
 function HomePage() {
 
     return (
         <div>
-            <h1>HOME</h1>
+            <Slider />
         </div>
     )
 }

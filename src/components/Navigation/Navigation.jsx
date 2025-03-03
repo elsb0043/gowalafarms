@@ -1,6 +1,6 @@
 import styles from './nav.module.css'
 import { useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { GiHamburgerMenu } from "react-icons/gi"
 import { RxCross2 } from "react-icons/rx"
 import { icons } from '../../services/Icons'
@@ -17,10 +17,6 @@ function Navigation() {
   }
 
   const Nav = [
-    { 
-        path: "/", 
-        title: "Home" 
-    },
     { 
         path: "/shop", 
         title: "Shop" 
@@ -45,15 +41,17 @@ function Navigation() {
 
   return (
     <nav className={styles.navBar}>
-      <img className={styles.navLogo} src="/assets/logo/logo.png" alt="Logo" />
+      <Link to="/">
+        <img className={styles.navLogo} src="/assets/logo/logo.png" alt="Logo"/>
+      </Link>
 
-    <div className={styles.navIcons}>
-        <div className={styles.hamburger} onClick={toggleNav}>
-            {isOpen ? <RxCross2 size={30} /> : <GiHamburgerMenu size={25} />}
-        </div>
+      <div className={styles.navIcons}>
+          <div className={styles.hamburger} onClick={toggleNav}>
+              {isOpen ? <RxCross2 size={30} /> : <GiHamburgerMenu size={25} />}
+          </div>
 
-        <div className={styles.basket}>{icons['Basket']}</div>
-    </div>
+          <div className={styles.basket}>{icons['Basket']}</div>
+      </div>
 
       <div className={`${styles.navLinks} ${isOpen ? styles.open : ''}`}>
         {Nav.map((item, index) => (

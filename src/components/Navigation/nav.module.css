@@ -6,16 +6,19 @@
     width: 100%; 
     height: 7rem;
     background-color: #EFF4F8;
+    z-index: 1000;
 
     .navLogo {
         width: 7rem;
         margin: 1rem;
+        z-index: 1000;
     }
 
     .navIcons {
         display: flex;
         justify-content: center;
         align-items: center;
+        z-index: 1000;
 
         .hamburger {
             color: #5E9A13;
@@ -33,6 +36,8 @@
 
     .navLinks {
         display: none;
+        justify-content: right;
+        align-items: end;
         flex-direction: column;
         position: absolute;
         z-index: 10;
@@ -41,22 +46,23 @@
         width: 100vw;
         height: 100vh;
         padding: 1rem;
-        padding-top: 20rem;
+        padding-top: 10rem;
+        margin-top: 7rem;
         gap: 2rem;
         list-style: none;
-        background-color: #EFF4F8;
+        background-color: #fff;
         text-align: center;
         z-index: 999;
     
         a {
-            color: #5E9A13;
+            color: #000;
             text-decoration: none;
             font-size: 2.5rem;
             text-align: center;
         }
 
         a:hover {
-            color: #aecec9;
+            color: #757575;
         }
     }
       

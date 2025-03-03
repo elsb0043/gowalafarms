@@ -1,0 +1,12 @@
+.swiperContainer {
+    overflow: hidden;
+    width: 100%;
+    height: 40rem;
+    position: relative;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
