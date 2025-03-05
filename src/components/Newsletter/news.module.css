@@ -1,0 +1,79 @@
+.newsletterContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    width: 100%;
+
+    .newsletterContent {
+        background-image: url(/assets/blob_01.jpg);
+        background-position: center;
+        background-size: cover;
+        height: 80vh;
+        width: 90%;
+        padding: 3rem;
+        border: transparent;
+        border-radius: 4rem;
+        margin: 0 6rem 0 6rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        .newsletterContentText {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background-color: #EFF4F8;
+            padding: 3rem;
+            border: transparent;
+            border-radius: 4rem;
+            height: 50vh;
+            width: 100%;
+            text-align: center;
+
+            h2 {
+                font-size: 2.7rem;
+            }
+
+            h3 {
+                color: #4c7e0f;
+                font-size: 2.5rem;
+                font-weight: 500;
+                max-width: 20rem;
+            }
+
+            p {
+                padding-top: 5rem;
+                max-width: 25rem;
+            }
+        }
+
+        input {
+            border: #fff;
+            padding: 2rem;
+            width: 100%;
+            margin: 3rem 0 3rem 0;
+            font-size: 1.7rem;
+            outline: none;
+        }
+
+        button {
+            padding: 1.5rem 13rem 1.5rem 13rem;
+            background-color: #5E9A13;
+            border: #5E9A13;
+            color: #fff;
+            cursor: pointer;
+            text-align: center;
+            font-size: 1.7rem;
+        }
+        
+        button:hover {
+            background-color: #4c7e0f;
+            border: #4c7e0f;
+            transition: 0.4s ease-in-out;
+        }
+    }
+}

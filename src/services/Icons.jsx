@@ -12,7 +12,8 @@ import {
     FaRegHeart,
     FaTrash,
     FaBasketShopping,
-    FaClock
+    FaClock,
+    FaCheck
 } from 'react-icons/fa6'
 
 import { 
@@ -36,5 +37,6 @@ export const icons = {
     'ArrowDown': <IoIosArrowDown />,
     'Remove': <FaTrash />,
     'Basket': <FaBasketShopping />,
-    'Clock': <FaClock />
+    'Clock': <FaClock />,
+    'Check': <FaCheck />
 }

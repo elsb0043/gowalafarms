@@ -37,6 +37,10 @@ function Navigation() {
         path: "/checkout", 
         title: "Checkout" 
     },
+    { 
+        path: "/backoffice", 
+        title: "Backoffice"
+    },
   ]
 
   return (

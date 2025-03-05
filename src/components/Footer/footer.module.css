@@ -5,6 +5,7 @@
     background-image: url(/assets/footer_bg.jpg);
     background-position: left;
     background-size: cover;
+    flex-wrap: wrap;
 
     .footerContent {
         display: flex;

@@ -5,9 +5,25 @@
     border: #5E9A13;
     border-radius: 8rem;
     cursor: pointer;
+    text-align: center;
 }
 
 .button:hover {
+    background-color: #4c7e0f;
+    transition: 0.4s ease-in-out;
+}
+
+
+.button2 {
+    padding: 1rem 10rem 1rem 10rem;
+    background-color: #5E9A13;
+    color: #fff;
+    cursor: pointer;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.button2:hover {
     background-color: #4c7e0f;
     transition: 0.4s ease-in-out;
 }

@@ -1,0 +1,56 @@
+.aboutContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin: 2rem 2rem 0 2rem;
+
+    .aboutContent {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        gap: 3rem;
+
+        .aboutContentAPI {
+            display: flex;
+            justify-content: left;
+            flex-direction: column;
+    
+            img {
+                height: 25rem;
+                width: 100%;
+                object-fit: cover;
+            }
+    
+            h3 {
+                font-weight: 500;
+                margin: 2rem 0 2rem 0;
+            }
+    
+            p {
+                font-size: 1.4rem;
+            }
+
+            .aboutList {
+                margin: 4rem 0 0 0;
+
+                .aboutListContent {
+                    display: flex;
+                    justify-content: left;
+                    flex-direction: row;
+
+                    .aboutListCheck {
+                        margin-right: 2rem;
+                        margin-bottom: 3rem;
+                        background-color: #5E9A13;
+                        color: #fff;
+                        padding: 0.4rem 0.5rem 0 0.5rem;
+                        border: #5E9A13;
+                        border-radius: 0.4rem;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,114 @@
+.team {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin: 4rem 1rem 4rem 1rem;
+
+    .teamText {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin: 3rem;
+        text-align: center;
+        gap: 1rem;
+
+        h2 {
+            font-size: 3rem;
+            margin-top: 3rem;
+        }
+
+        h3 {
+            font-weight: 400;
+            font-size: 3rem;
+            max-width: 30rem;
+        }
+
+        p {
+            margin-bottom: 5rem;
+            font-size: 1.5rem;
+        }
+    }
+
+    .teamCards {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        flex-wrap: wrap;
+        gap: 3rem;
+
+        .teamBorder {
+            box-shadow: 2px 2px 8px rgb(197, 197, 197);
+
+            .teamCard {
+                display: flex;
+                justify-content: end;
+                align-items: center;
+                flex-direction: column;
+                background-color: #EFF4F8;
+                height: 40rem;
+                width: 30rem;
+                margin: 0.5rem;
+                gap: 1rem;
+
+                img {
+                    position: relative;
+                    height: 100%;
+                    width: 100%;
+                    object-fit: cover;
+                }
+
+                h3 {
+                    font-weight: 500;
+                    position: absolute;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    cursor: pointer;
+                    background-color: #eff4f846;
+                    width: 28rem;
+                    height: 5rem;
+                    margin-bottom: 2rem;
+                    overflow: hidden;
+                }
+
+                .teamCardText {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    flex-direction: column;
+                    position: absolute;
+                    background-color: #eff4f8d8;
+                    padding: 2rem;
+                    width: 28rem;
+                    margin-bottom: 2rem;
+                    transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out;
+                    max-height: 5rem;
+                    overflow: hidden;
+
+                    p {
+                        text-align: center;   
+                        margin-bottom: 2rem;    
+                        font-size: 1.5rem;   
+                        font-weight: 300;
+                        opacity: 0;
+                        transition: opacity 0.3s ease-in-out;
+                    }
+                }
+                
+                .teamCardText.open {
+                    max-height: 100%;
+                    padding: 2rem;
+                    padding-bottom: 4rem;
+                }
+                
+                .teamCardText.open p {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}

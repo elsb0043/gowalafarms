@@ -1,0 +1,85 @@
+.team {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin: 4rem 1rem 4rem 1rem;
+
+    .teamText {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin: 3rem;
+        text-align: center;
+        gap: 1rem;
+
+        h2 {
+            font-size: 3.5rem;
+            margin-top: 3rem;
+            max-width: 20rem;
+        }
+
+        h3 {
+            font-weight: 400;
+            font-size: 3rem;
+            max-width: 30rem;
+        }
+
+        p {
+            margin-bottom: 5rem;
+            font-size: 1.7rem;
+            max-width: 28rem;
+        }
+    }
+
+    .productsCards {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        flex-wrap: wrap;
+        gap: 3rem;
+
+        .productsBorder {
+            box-shadow: 2px 2px 8px rgb(197, 197, 197);
+
+            .productsCard {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                padding: 3rem;
+                background-color: #EFF4F8;
+                height: 40rem;
+                width: 30rem;
+                margin: 1rem;
+                gap: 1rem;
+    
+                .procent {
+                    padding: 1rem 2rem 1rem 2rem;
+                    background-color: #5E9A13;
+                    color: #fff;
+                    border: #5E9A13;
+                    border-radius: 10rem;
+                    margin-right: -20rem;
+                }
+    
+                img {
+                    height: 15rem;
+                    object-fit: cover;
+                }
+    
+                h3 {
+                    font-weight: 500;
+                }
+    
+                h2 {
+                    color: #5E9A13;
+                    font-size: 3rem;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,54 @@
+.quickContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin: 3rem;
+    box-shadow: 2px 2px 8px rgb(197, 197, 197);
+
+    .quickContent {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        flex-wrap: wrap;
+        margin: 3rem;
+
+        .quickContentText {
+            h2 {
+                margin-bottom: 4rem;
+            }
+
+            p {
+                margin-bottom: 3rem;
+                max-width: 30rem;
+            }
+
+        }
+
+        .quickContentInfo {
+            display: flex;
+            justify-content: flex-start;
+            flex-direction: column;
+            gap: 2rem;
+            margin-top: 3rem;
+
+            .quickContentInfoCard {
+                display: flex;
+                justify-content: left;
+                align-items: start;
+
+                p {
+                    max-width: 70%;
+                    margin-left: 2rem;
+                }
+
+                .quickIcons {
+                    font-size: 3rem;
+                    color: #5E9A13;
+                }
+            }
+        }
+    }
+}

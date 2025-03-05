@@ -1,0 +1,64 @@
+.milk {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin: 4rem 1rem 4rem 1rem;
+
+    .milkText {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin: 3rem;
+        text-align: center;
+        gap: 1rem;
+
+        h3 {
+            font-weight: 400;
+            font-size: 2.5rem;
+        }
+    
+        h2 {
+            margin: 0 3rem 0 3rem;
+            margin-bottom: 3rem;
+        }
+    }
+
+    .milkCards {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        flex-wrap: wrap;
+        gap: 3rem;
+
+        .milkCard {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 3rem;
+            box-shadow: 5px 5px 8px rgb(197, 197, 197);
+            gap: 2rem;
+            height: 40rem;
+            width: 30rem;
+
+            img {
+                height: 10rem;
+                object-fit: cover;
+            }
+
+            h3 {
+                font-weight: 500;
+            }
+
+            p {
+                font-size: 1.3rem;
+                margin: 0 3.5rem 0 3.5rem;
+                text-align: center;
+            }
+        }
+    }
+}

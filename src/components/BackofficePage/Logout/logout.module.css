@@ -1,0 +1,19 @@
+/* Mobile-first */
+.logoutButton {
+    background-color: #829B97;
+    padding: 1rem 5rem 1rem 5rem;
+    border: #829B97 1px solid;
+    border-radius: 3rem 0 3rem 0;
+    cursor: pointer;
+    margin: 3rem;
+    font-size: 1.5rem;
+    font-weight: 100;
+    color: #fff;
+}
+
+/* Desktop */
+@media (min-width: 768px) {
+    .logoutButton {
+        margin-top: 5rem;
+    }
+}

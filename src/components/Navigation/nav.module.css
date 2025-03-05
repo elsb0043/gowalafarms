@@ -24,6 +24,7 @@
             color: #5E9A13;
             margin: 1rem;
             z-index: 1000;
+            cursor: pointer;
         }
     
         .basket {
@@ -31,6 +32,7 @@
             margin: 1rem;
             font-size: 3rem;
             z-index: 1000;
+            cursor: pointer;
         }
     }
 

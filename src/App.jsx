@@ -1,4 +1,6 @@
 import { useLocation, useRoutes } from "react-router-dom"
+import { useAuthContext } from "./context/useAuthContext"
+import { BackofficeProducts } from "./pages/Backoffice/BackofficeItems"
 import Navigation from "./components/Navigation/Navigation"
 import HomePage from "./pages/Home"
 import ShopPage from "./pages/Shop"
@@ -7,8 +9,15 @@ import AboutPage from "./pages/About"
 import ContactPage from "./pages/Contact"
 import CheckoutPage from "./pages/Checkout"
 import Footer from "./components/Footer/Footer"
+import ProtectedRoute from "./components/ProtectedRoute"
+import Backoffice from "./pages/Backoffice/Backoffice"
+import ProductForm from "./pages/Backoffice/Form/ProductForm"
+import Login from "./components/BackofficePage/Login/Login"
 
 function App() {
+  // Henter authentication state via custom hook useAuth
+  const { signedIn } = useAuthContext()
+
   const location = useLocation() // Bruges til at hente den nuværende URL (path)
   
   // Bestemmer om navigationen og footer skal vises baseret på URL'en
@@ -40,6 +49,34 @@ function App() {
     { 
       path: "/checkout", 
       element: <CheckoutPage />
+    },
+    { 
+      path: "/login", 
+      element: <Login />
+    },
+    { 
+      path: "/backoffice", 
+      element: (
+        <ProtectedRoute isAllowed={signedIn}>
+            <Backoffice /> {/* Backoffice komponent, beskyttet af login */}
+        </ProtectedRoute>
+      ),
+      children: [
+        {
+          path: "products", 
+          element: <BackofficeProducts />, // Produkt oversigt i backoffice
+          children: [
+            {
+              path: "add", // Rute til at tilføje et nyt produkt
+              element: <ProductForm />,
+            },
+            {
+              path: "edit/:id", // Rute til at redigere et produkt baseret på ID
+              element: <ProductForm isEditMode={true} />,
+            },
+          ],
+        },
+      ],
     },
     {
       path: "*", // Fallback rute, hvis ingen af de øvrige ruter matches

@@ -1,4 +1,4 @@
-import Button from '../../Button/Button'
+import Button from '../../../Button/Button'
 import styles from './swiperText.module.css'
 
 function SwiperText() {
