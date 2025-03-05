@@ -1,18 +1,44 @@
+import { useState } from 'react'
 import styles from './news.module.css'
 
 function Newsletter() {
+    const [email, setEmail] = useState('')
+    const [isSubmitted, setIsSubmitted] = useState(false)
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        
+        setIsSubmitted(true)
+    }
 
     return (
         <div className={styles.newsletterContainer}>
-           <div className={styles.newsletterContent}>
-            <div className={styles.newsletterContentText}>
-                <h2>Nyhedsbrev</h2>
-                <h3>Få nyhederne fra gården på din mail.</h3>
-                <p>Tilmeld dig vores nyhedsbrev - så kan du altid følge med i, hvad der sker på farmen.</p>
-            </div>
-            <input type="email" placeholder='Din email' />
-            <button type="submit">Tilmeld</button>
-           </div>
+            {!isSubmitted ? (
+                <div className={styles.newsletterContent}>
+                    <div className={styles.newsletterContentText}>
+                        <h2>Nyhedsbrev</h2>
+                        <h3>Få nyhederne fra gården på din mail.</h3>
+                        <p>Tilmeld dig vores nyhedsbrev - så kan du altid følge med i, hvad der sker på farmen.</p>
+                    </div>
+                    <form onSubmit={handleSubmit}>
+                        <input
+                            required
+                            type="email"
+                            placeholder="Din email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
+                        <button type="submit">Tilmeld</button>
+                    </form>
+                </div>
+            ) : (
+                <div className={styles.successMessageContainer}>
+                    <div className={styles.successMessageContent}>
+                        <h2>Tak for din tilmelding!</h2>
+                        <h3>Du har nu tilmeldt dig vores nyhedsbrevet.</h3>
+                    </div>
+                </div>
+            )}
         </div>
     )
 }

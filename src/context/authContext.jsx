@@ -94,7 +94,14 @@ export const AuthContextProvider = ({ children }) => {
   }
 
   // Værdi, der leveres til AuthContext.Provider for at blive brugt af komponenter
-  const value = { token, user, getUser, signIn, signOut, signedIn }
+  const value = { 
+    token, 
+    user, 
+    getUser, 
+    signIn, 
+    signOut, 
+    signedIn 
+  }
 
   // Returnér en AuthContext.Provider, der deler værdien med børnene i komponenttræet
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>

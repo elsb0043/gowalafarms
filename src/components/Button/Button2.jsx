@@ -1,11 +1,11 @@
 import styles from './button.module.css'
 
-function Button2({ text }) {
+function Button2({ text, type = "button", onClick }) {
 
     return (
-        <div className={styles.button2}>
+        <button className={styles.button2} type={type} onClick={onClick}>
             {text}
-        </div>
+        </button>
     )
 }
 

@@ -1,33 +1,33 @@
 import { useCallback, useEffect, useState } from "react"
 import { useAuthContext } from "../context/useAuthContext"
 
-const useFetchArticles = () => {
-    const [articles, setArticles] = useState([])
+const useFetchMessages = () => {
+    const [messages, setMessages] = useState([])
     const [error, setError] = useState(null)
     const [isLoading, setIsLoading] = useState(false)
     const { token } = useAuthContext()
 
-    // HENT ALLE ARTIKLER 
-    const fetchArticles = useCallback(async () => {
+    // HENT ALLE BESKEDER 
+    const fetchMessages = useCallback(async () => {
         setError(null)
         setIsLoading(true)
         try {
-            const response = await fetch("http://localhost:3042/articles")
+            const response = await fetch("http://localhost:3042/messages")
             const data = await response.json()
-            setArticles(data.data)
+            setMessages(data.data)
         } catch (error) {
             setError(error.message)
-            console.error("Error fetching articles:", error)
+            console.error("Error fetching messages:", error)
         } finally {
             setIsLoading(false)
         }
     }, [])
 
     
-    // OPRET ARTIKLER
-    const createArticle = async (formData) => {
+    // OPRET BESKEDER
+    const createMessage = async (formData) => {
         try {
-            const response = await fetch("http://localhost:3042/article", {
+            const response = await fetch("http://localhost:3042/message", {
                 method: "POST",
                 headers: {
                     Authorization: `Bearer ${token}`,
@@ -35,7 +35,7 @@ const useFetchArticles = () => {
                 body: formData,
             })
             if (!response.ok) {
-                throw new Error("Fejl ved oprettelse af hold") 
+                throw new Error("Fejl ved oprettelse af beskeder") 
             }
 
             const result = await response.json()
@@ -47,10 +47,10 @@ const useFetchArticles = () => {
     }
 
 
-    // OPDATER ARTIKLER
-    const updateArticle = async (formData) => {
+    // OPDATER BESKEDER
+    const updateMessage = async (formData) => {
         try {
-            const response = await fetch("http://localhost:3042/article", {
+            const response = await fetch("http://localhost:3042/message", {
                 method: "PUT",
                 headers: {
                     Authorization: `Bearer ${token}`, 
@@ -58,7 +58,7 @@ const useFetchArticles = () => {
                 body: formData,
             })
             if (!response.ok) {
-                throw new Error("Fejl ved opdatering af hold")
+                throw new Error("Fejl ved opdatering af beskeder")
             }
             const result = await response.json()
             return result
@@ -69,68 +69,68 @@ const useFetchArticles = () => {
     }
 
 
-    // SLET ARTIKLER
-    const deleteArticle = async (params) => {
+    // SLET BESKEDER
+    const deleteMessage = async (params) => {
         
         try {
-            await fetch(`http://localhost:3042/article/${params}`, {
+            await fetch(`http://localhost:3042/message/${params}`, {
                 method: "DELETE",
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
             })
 
-            const filteredArray = articles.filter((ar) => ar._id !== params)
-            setArticles(filteredArray)
+            const filteredArray = messages.filter((me) => me._id !== params)
+            setMessages(filteredArray)
         } catch (error) {
             console.error("Fejl ved sletning:", error)
         }
     }
 
 
-    // HENT ARTIKLER BASERET PÅ ID
-    const fetchArticleById = async (id) => {
+    // HENT BESKEDER BASERET PÅ ID
+    const fetchMessageById = async (id) => {
         setError(null)
         setIsLoading(true)
     
         try {
-            const response = await fetch(`http://localhost:3042/article/${id}`)
+            const response = await fetch(`http://localhost:3042/message/${id}`)
     
             if (!response.ok) {
                 const errorText = await response.text()
-                throw new Error(`Failed to fetch article: ${errorText}`)
+                throw new Error(`Failed to fetch message: ${errorText}`)
             }
     
-            const article = await response.json()
-            return article.data[0]
+            const message = await response.json()
+            return message.data[0]
         } catch (error) {
             setError(error.message)
-            console.error("Error fetching article:", error)
+            console.error("Error fetching message:", error)
         } finally {
             setIsLoading(false) 
         }
     }
 
     const refetch = useCallback(() => {
-        fetchArticles()
-    }, [fetchArticles])
+        fetchMessages()
+    }, [fetchMessages])
     
     useEffect(() => {
-        fetchArticles()
+        fetchMessages()
     }, [])
     
     return {
-        articles,
-        setArticles,
-        fetchArticles,
-        fetchArticleById,
-        createArticle,
-        updateArticle,
-        deleteArticle,
+        messages,
+        setMessages,
+        fetchMessages,
+        fetchMessageById,
+        createMessage,
+        updateMessage,
+        deleteMessage,
         isLoading,
         refetch,
         error,
     }
 }
 
-export { useFetchArticles }
+export { useFetchMessages }

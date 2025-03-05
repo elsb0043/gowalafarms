@@ -2,16 +2,13 @@ import { useEffect, useState } from "react"
 import { useNavigate, useOutletContext, useParams } from "react-router-dom"
 import styles from "./form.module.css"
 import { useFetchProducts } from "../../../hooks/useFetchProducts"
+import Button3 from "../../../components/Button/Button3"
 
 const ProductForm = ({ isEditMode }) => {
     // State til at gemme formularens inputværdier
     const [title, setTitle] = useState("")
-    const [date, setDate] = useState("")
-    const [fromTime, setFromTime] = useState("")
-    const [toTime, setToTime] = useState("")
+    const [price, setPrice] = useState("")
     const [image, setImage] = useState(null)
-    const [time, setTime] = useState("")
-    const [description, setDescription] = useState("")
     const [selectedFile, setSelectedFile] = useState(null) // Gemmer det valgte billede
 
     const { refetch } = useOutletContext() // Henter refetch-funktionen fra Outlet Context
@@ -32,9 +29,7 @@ const ProductForm = ({ isEditMode }) => {
                     // Hvis vi får svar, sætter vi formularens værdier
                     if (response) {
                         setTitle(response.title) // Sætter produktsnavn
-                        setDate(response.date) // Sætter dato
-                        setTime(response.time) // Sætter tidspunkt
-                        setDescription(response.description) // Sætter beskrivelse
+                        setPris(response.price) // Sætter pris
                         setImage(response.image) // Sætter billede
                     }
                 } catch (error) {
@@ -66,12 +61,7 @@ const ProductForm = ({ isEditMode }) => {
         // Opretter FormData-objekt til at sende data til API'et
         const productData = new FormData()
         productData.append("title", title)
-        productData.append("description", description)
-        productData.append("date", date)
-
-        // Kombinerer `fromTime` og `toTime` kun hvis det ikke er i redigeringstilstand
-        const finalTime = isEditMode ? time : `${fromTime}-${toTime}`
-        productData.append("time", finalTime)
+        productData.append("price", price)
 
         // Tilføjer billedet hvis det er valgt
         if (selectedFile) {
@@ -107,6 +97,11 @@ const ProductForm = ({ isEditMode }) => {
         <form onSubmit={handleSubmitProduct} className={styles.form}>
             <h2>{isEditMode ? "Opdater produkt" : "Tilføj produkt"}</h2>
             <div>
+                <div>
+                    <label htmlFor='image'>Vælg billede (valgfrit):</label>
+                    {image && <img className={styles.previewImage} src={image} />}
+                    <input id='image' type='file' onChange={handleImageChange} />
+                </div>
                 {/* Når htmlFor matcher id på input, fokuseres input, når man klikker på label */}
                 <label htmlFor='title'>Titel:</label>
                 <input
@@ -118,69 +113,18 @@ const ProductForm = ({ isEditMode }) => {
                 />
             </div>
             <div>
-                <label htmlFor='description'>Beskrivelse:</label>
+                <label htmlFor='price'>Pris:</label>
                 <input
-                    id='description'
+                    id='price'
                     type='text'
-                    value={description}
-                    onChange={(e) => setDescription(e.target.value)}
+                    value={price}
+                    onChange={(e) => setPrice(e.target.value)}
                     required
                 />
             </div>
-            <div>
-                <label htmlFor='date'>Dage:</label>
-                <input
-                    id='date'
-                    type='text'
-                    value={date}
-                    onChange={(e) => setDate(e.target.value)}
-                    required
-                />
-            </div>
-            {isEditMode ? (
-                <div>
-                    <label htmlFor='time'>Tid:</label>
-                    <input
-                        id='time'
-                        type='text'
-                        value={time}
-                        onChange={(e) => setTime(e.target.value)}
-                        required
-                    />
-                </div>
-            ) : (
-                <>
-                    <div>
-                        <label htmlFor='fromTime'>Fra kl:</label>
-                        <input
-                            id='fromTime'
-                            type='time'
-                            value={fromTime}
-                            onChange={(e) => setFromTime(e.target.value)}
-                            required
-                        />
-                    </div>
-                    <div>
-                        <label htmlFor='toTime'>Til kl:</label>
-                        <input
-                            id='toTime'
-                            type='time'
-                            value={toTime}
-                            onChange={(e) => setToTime(e.target.value)}
-                            required
-                        />
-                    </div>
-                </>
-            )}
 
-            <div>
-                <label htmlFor='image'>Vælg billede (valgfrit):</label>
-                {image && <img className={styles.previewImage} src={image} />}
-                <input id='image' type='file' onChange={handleImageChange} />
-            </div>
-
-            <Button
-                type='submit'
+            <Button3
+                type='type'
                 buttonText={isEditMode ? "Opdater et produkt" : "Tilføj et produkt"}
                 background={!isEditMode && "green"}
             />

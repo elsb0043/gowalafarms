@@ -1,6 +1,6 @@
 import { useLocation, useRoutes } from "react-router-dom"
 import { useAuthContext } from "./context/useAuthContext"
-import { BackofficeProducts } from "./pages/Backoffice/BackofficeItems"
+import { BackofficeMessages, BackofficeProducts } from "./pages/Backoffice/BackofficeItems"
 import Navigation from "./components/Navigation/Navigation"
 import HomePage from "./pages/Home"
 import ShopPage from "./pages/Shop"
@@ -11,8 +11,9 @@ import CheckoutPage from "./pages/Checkout"
 import Footer from "./components/Footer/Footer"
 import ProtectedRoute from "./components/ProtectedRoute"
 import Backoffice from "./pages/Backoffice/Backoffice"
-import ProductForm from "./pages/Backoffice/Form/ProductForm"
 import Login from "./components/BackofficePage/Login/Login"
+import ProductForm from "./pages/Backoffice/Forms/ProductForm"
+import MessageForm from "./pages/Backoffice/Forms/MessageForm"
 
 function App() {
   // Henter authentication state via custom hook useAuth
@@ -73,6 +74,20 @@ function App() {
             {
               path: "edit/:id", // Rute til at redigere et produkt baseret på ID
               element: <ProductForm isEditMode={true} />,
+            },
+          ],
+        },
+        {
+          path: "messages", 
+          element: <BackofficeMessages />,
+          children: [
+            {
+              path: "add",
+              element: <MessageForm />,
+            },
+            {
+              path: "edit/:id", 
+              element: <MessageForm isEditMode={true} />,
             },
           ],
         },

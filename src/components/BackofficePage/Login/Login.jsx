@@ -1,9 +1,9 @@
-import { useAuthContext } from '../../../context/useAuthContext'
+import useAuth from '../../../hooks/useAuth'
 import Button from '../../Button/Button'
 import styles from './login.module.css'
 
 function Login() {
-    const {setEmail, setPassword, error, signIn} = useAuthContext()
+    const { setEmail, setPassword, error, signIn } = useAuth()
 
     return (
         <div className={styles.loginContainer}>

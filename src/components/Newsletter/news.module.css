@@ -58,6 +58,7 @@
             margin: 3rem 0 3rem 0;
             font-size: 1.7rem;
             outline: none;
+            font-family: "Baskervville", serif;
         }
 
         button {
@@ -74,6 +75,42 @@
             background-color: #4c7e0f;
             border: #4c7e0f;
             transition: 0.4s ease-in-out;
+        }
+    }
+
+    .successMessageContainer {
+        background-image: url(/assets/blob_01.jpg);
+        background-position: center;
+        background-size: cover;
+        height: 80vh;
+        width: 90%;
+        padding: 3rem;
+        border: transparent;
+        border-radius: 4rem;
+        margin: 0 6rem 0 6rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        .successMessageContent {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background-color: #EFF4F8;
+            padding: 3rem;
+            border: transparent;
+            border-radius: 4rem;
+            height: 50vh;
+            width: 100%;
+            text-align: center;
+            gap: 3rem;
+    
+            h3 {
+                color: #5E9A13;
+
+            }
         }
     }
 }

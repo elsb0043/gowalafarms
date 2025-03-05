@@ -1,0 +1,51 @@
+.backoffice {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  h1 {
+    font-size: 5rem;
+    font-weight: 600;
+    margin: 3rem;
+  }
+}
+
+.backofficeContent {
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2rem 0;
+    font-size: 1.5rem;
+    text-align: left;
+  }
+
+  thead {
+    background-color: #f4f4f4;
+  }
+
+  th,
+  td {
+    padding: 2rem;
+    border: 1px solid #ddd;
+  }
+
+  th {
+    font-weight: bold;
+    color: #333;
+  }
+
+  tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+
+  tr:hover {
+    background-color: #f1f1f1;
+  }
+
+  img {
+    max-height: 13rem;
+    max-width: 13rem;
+    object-fit: cover;
+  }
+}

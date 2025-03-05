@@ -27,17 +27,27 @@
 
             input {
                 border: #fff;
-                padding: 1rem 8rem 1rem 2rem;
+                padding: 1rem 6rem 1rem 2rem;
                 width: 100%;
                 margin: 1rem;
                 font-size: 1.7rem;
                 outline: none;
                 border: transparent;
                 border-radius: 1rem;
+                font-family: "Baskervville", serif;
             }
 
-            .textarea {
-                padding: 1rem 8rem 5rem 2rem;
+            textarea {
+                border: #fff;
+                padding: 1rem 6rem 5rem 2rem;
+                width: 100%;
+                margin: 1rem;
+                font-size: 1.7rem;
+                outline: none;
+                border: transparent;
+                border-radius: 1rem;
+                resize: none;
+                font-family: "Baskervville", serif;
             }
         }
     }

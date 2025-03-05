@@ -1,12 +1,12 @@
-.team {
+.productsContainer {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     flex-wrap: wrap;
-    margin: 4rem 1rem 4rem 1rem;
+    margin: 4rem 0 4rem 0;
 
-    .teamText {
+    .productsText {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -28,9 +28,47 @@
         }
 
         p {
-            margin-bottom: 5rem;
             font-size: 1.7rem;
             max-width: 28rem;
+        }
+    }
+
+    .productsSort {
+        display: flex;
+        justify-content: right;
+        align-items: center;
+        padding: 2rem;
+        background-color: #2a4f5711;
+        width: 100%;
+
+        .productsSortIcon {
+            color: #5E9A13;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        .alphabetDropdown {
+            position: absolute;
+            margin-top: 77rem; 
+            right: 0;
+            background: #fff;
+            border: 1px solid #ccc;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column; 
+            width: max-content;
+            padding: 0.5rem;
+            z-index: 10; 
+        }
+        
+        .alphabetDropdown span {
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            transition: 0.2s ease-in-out;
+        }
+        
+        .alphabetDropdown span:hover {
+            background: #f0f0f0;
         }
     }
 
@@ -41,6 +79,7 @@
         flex-direction: column;
         flex-wrap: wrap;
         gap: 3rem;
+        margin-top: 4rem;
 
         .productsBorder {
             box-shadow: 2px 2px 8px rgb(197, 197, 197);

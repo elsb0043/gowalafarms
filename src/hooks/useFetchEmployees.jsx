@@ -1,9 +1,11 @@
 import { useCallback, useEffect, useState } from "react"
+import { useAuthContext } from "../context/useAuthContext"
 
 const useFetchEmployees = () => {
     const [employees, setEmployees] = useState([])
     const [error, setError] = useState(null)
     const [isLoading, setIsLoading] = useState(false)
+    const { token } = useAuthContext()
 
     // HENT ALLE EMPLOYEES 
     const fetchEmployees = useCallback(async () => {
@@ -21,6 +23,7 @@ const useFetchEmployees = () => {
         }
     }, [])
 
+    
       // OPRET EMPLOYEES
       const createEmployee = async (formData) => {
         try {

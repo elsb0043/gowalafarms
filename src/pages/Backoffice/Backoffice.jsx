@@ -1,6 +1,7 @@
 import { Outlet } from 'react-router-dom'
 import BackofficeNavigation from './Navigation/BackofficeNavigation'
 import Logout from '../../components/BackofficePage/Logout/Logout'
+import '../Backoffice/backoffice.css'
 
 function Backoffice() {
 

@@ -21,6 +21,9 @@ import {
     IoIosArrowDown
 } from "react-icons/io"
 
+import { FaSortAlphaDown } from "react-icons/fa"
+
+
 export const icons = {
     'BurgerButton': <FaBurger />,
     'Instagram': <FaInstagram />,
@@ -38,5 +41,6 @@ export const icons = {
     'Remove': <FaTrash />,
     'Basket': <FaBasketShopping />,
     'Clock': <FaClock />,
-    'Check': <FaCheck />
+    'Check': <FaCheck />,
+    'A-Z': <FaSortAlphaDown />
 }

@@ -1,10 +1,12 @@
 import { useCallback, useEffect, useState } from "react"
+import { useAuthContext } from "../context/useAuthContext"
 
 const useFetchProducts = () => {
     // State til at gemme produkter, fejlbeskeder og loading-status
     const [products, setProducts] = useState([]) // Når komponenten først rendes, har vi ikke nogen produkter at vise, så vi initialiserer produkterne som et tomt array []
     const [error, setError] = useState(null) // Når komponenten først rendes, antager vi, at der ikke er nogen fejl, så vi sætter error til null
     const [isLoading, setIsLoading] = useState(false) // Når komponenten først rendes, er vi ikke i gang med at hente data, så isLoading sættes til false
+    const { token } = useAuthContext() // Henter token fra auth-contexten
 
     // HENT ALLE PRODUCTS 
     // Bruger useCallback for at memoisere funktionen (dvs. den genoprettes ikke ved hver render)
@@ -24,6 +26,7 @@ const useFetchProducts = () => {
         }
     }, [])
 
+    
     // OPRET PRODUKT
     const createProduct = async (formData) => {
         try {
