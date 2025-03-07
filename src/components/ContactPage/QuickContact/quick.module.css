@@ -1,3 +1,4 @@
+/* Mobile-first */
 .quickContainer {
     display: flex;
     justify-content: center;
@@ -49,6 +50,24 @@
                     font-size: 3rem;
                     color: #5E9A13;
                 }
+            }
+        }
+    }
+}
+
+
+/* Desktop */
+@media (min-width: 768px) {
+    .quickContainer {    
+        .quickContent {
+            justify-content: flex-start;
+            align-items: flex-start;
+            margin: 2rem;
+    
+            .quickContentText {
+                justify-content: flex-start;
+                align-items: left;
+                margin: 0;
             }
         }
     }

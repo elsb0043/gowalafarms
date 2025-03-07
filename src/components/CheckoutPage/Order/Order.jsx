@@ -1,8 +1,7 @@
 import { useState } from 'react'
 import { useBasket } from '../../../context/basketContext'
-import Button2 from '../../Button/Button2'
-import styles from './order.module.css'
 import { icons } from '../../../services/Icons'
+import styles from './order.module.css'
 
 function Order() {
     const { basket, clearBasket, removeFromBasket } = useBasket()
@@ -12,8 +11,24 @@ function Order() {
 
     const handleSubmit = (e) => {
         e.preventDefault()
+
+        const orderData = {
+            email,
+            products: basket,
+            total,
+            date: new Date().toISOString(),
+        }
+
+        // Hent eksisterende ordrer fra localStorage
+        const existingOrders = JSON.parse(localStorage.getItem('orderHistory')) || []
+
+        // Tilføj den nye ordre
+        localStorage.setItem('orderHistory', JSON.stringify([...existingOrders, orderData]))
+
         alert('Bestilling afgivet!')
+
         clearBasket()
+        setEmail('')
     }
 
     return (
@@ -28,16 +43,14 @@ function Order() {
                         <ul>
                             {basket.map((product, index) => (
                                 <div key={product._id} className={styles.formContainer}>
-                                    <img src={product.image} />
+                                    <img src={product.image} alt={product.title} />
                                     <div className={styles.formContent}>
                                         <div className={styles.formContentOrder}>
-                                            <li className={styles.formContentProduct} >{product.title}</li>
-                                            <li className={styles.formContentPrice} >{product.price},-</li>
+                                            <li className={styles.formContentProduct}>{product.title}</li>
+                                            <li className={styles.formContentPrice}>{product.price},-</li>
                                         </div>
                                         <div className={styles.formContentRemove} onClick={() => removeFromBasket(index)}>
-                                            <div>
-                                                {icons['X']}
-                                            </div>
+                                            <div>{icons['X']}</div>
                                         </div>
                                     </div>
                                 </div>
@@ -59,7 +72,7 @@ function Order() {
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                     />
-                    <Button2 text="Afgiv ordre" type='type' onClick={handleSubmit} />
+                    <button type='submit' className={styles.submitButton}>Afgiv ordre</button>
                 </form>
             </div>
         </div>

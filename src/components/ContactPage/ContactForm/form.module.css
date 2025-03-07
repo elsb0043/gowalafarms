@@ -1,3 +1,4 @@
+/* Mobile-first */
 .formContainer {
     display: flex;
     justify-content: center;
@@ -49,6 +50,18 @@
                 resize: none;
                 font-family: "Baskervville", serif;
             }
+        }
+    }
+}
+
+
+/* Desktop */
+@media (min-width: 768px) {
+    .formContainer {
+        margin: 2rem;
+    
+        .formContent {
+            width: 40vw;
         }
     }
 }

@@ -16,10 +16,3 @@ body {
     font-size: 1.6rem;
 }
 /*#endregion BASE SITE CSS END */
-
-
-.contact {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
