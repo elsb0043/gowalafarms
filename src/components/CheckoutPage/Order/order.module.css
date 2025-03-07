@@ -36,15 +36,105 @@
             flex-direction: column;
             background-color: #EFF4F8;
             padding: 3rem;
-            height: 50vh;
+            max-height: 50rem;
             width: 100%;
             text-align: center;
+
+            .orderForm {
+                display: flex;
+                justify-content: center;
+                flex-direction: column;
+                background-color: #fff;
+                padding: 1rem;
+                max-height: 30rem;
+
+                ul {
+                    text-decoration: none;
+                    list-style-type: none;
+
+                    .formContainer {
+                        display: flex;
+                        justify-content: left;
+                        align-items: center;
+
+                        img {
+                            height: 8rem;
+                            width: 8rem;
+                        }
+    
+                        .formContent {
+                            display: flex;
+                            justify-content: left;
+                            align-items: start;
+                            
+                            .formContentOrder {
+                                display: flex;
+                                justify-content: center;
+                                align-items: start;
+                                flex-direction: column;
+    
+                                .formContentProduct {
+                                    font-weight: 700;
+                                }
+    
+                                .formContentPrice {
+                                    color: #5E9A13;
+                                }
+                            }
+    
+                            .formContentRemove {
+                                background-color: #5E9A13;
+                                padding: 0.6rem 0.5rem 0.2rem 0.5rem;
+                                border: #5E9A13;
+                                border-radius: 100%;
+                                margin-left: 6rem;
+                                cursor: pointer;
+
+                                div {
+                                    font-size: 1.5rem;
+                                    font-weight: 700;
+                                    color: #fff;
+                                }
+                            }
+
+                            .formContentRemove:hover {
+                                background-color: #4c7e0f;
+                                transition: 0.4s ease-in-out;
+                            }
+                        }
+                    }
+                }
+
+                .formTotal {
+                    display: flex;
+                    justify-content: right;
+                    align-items: center;
+
+                    .total {
+                        color: #4c7e0f;
+                        margin-right: 2rem;
+                    }
+                }
+            }
+
+            .formIAlt {
+                display: flex;
+                justify-content: right;
+                background-color: #fff;
+                padding: 1rem;
+                width: 100%;
+                margin: 2rem 0 2rem 0;
+
+                .alt {
+                    color: #4c7e0f;
+                    margin-right: 2rem;
+                }
+            }
 
             input {
                 border: #fff;
                 padding: 1rem;
                 width: 100%;
-            
                 font-size: 1.7rem;
                 outline: none;
                 font-family: "Baskervville", serif;

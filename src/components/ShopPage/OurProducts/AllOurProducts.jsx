@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
-import styles from './our.module.css'
 import { useFetchProducts } from '../../../hooks/useFetchProducts'
-import Button from '../../Button/Button'
 import { icons } from '../../../services/Icons'
+import ProductCard from '../../ProductCard/ProductCard'
+import styles from './our.module.css'
 
 function AllOurProducts() {
     const { products } = useFetchProducts()
@@ -55,16 +55,8 @@ function AllOurProducts() {
             </div>
             <div className={styles.productsCards}>
                 {filteredProducts.length > 0 ? (
-                    filteredProducts.map(pro => (
-                        <div key={pro._id} className={styles.productsBorder}>
-                            <div className={styles.productsCard}>
-                                <div className={styles.procent}>60%</div>
-                                <img src={pro.image} alt={pro.title} />
-                                <h3>{pro.title}</h3>
-                                <h2>{pro.price},-</h2>
-                                <Button text="Tilføj til kurv" />
-                            </div>
-                        </div>
+                    filteredProducts.map(product => (
+                        <ProductCard key={product._id} product={product} />
                     ))
                 ) : (
                     <p className={styles.noProducts}>Ingen produkter fundet.</p>

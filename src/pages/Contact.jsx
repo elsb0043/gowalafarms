@@ -8,8 +8,10 @@ function ContactPage() {
     return (
         <div>
             <PageHeader title="Kontakt Gowala" text="Vores kontaktinformationer" />
-            <ContactForm />
-            <QuickContact />
+            <div className="contact">
+                <ContactForm />
+                <QuickContact />
+            </div>
             <OurTeam />
         </div>
     )

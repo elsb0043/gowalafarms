@@ -21,7 +21,13 @@ import {
     IoIosArrowDown
 } from "react-icons/io"
 
-import { FaSortAlphaDown } from "react-icons/fa"
+import { 
+    FaSortAlphaDown 
+} from "react-icons/fa"
+
+import {
+    RxCross2 
+} from "react-icons/rx"
 
 
 export const icons = {
@@ -42,5 +48,6 @@ export const icons = {
     'Basket': <FaBasketShopping />,
     'Clock': <FaClock />,
     'Check': <FaCheck />,
-    'A-Z': <FaSortAlphaDown />
+    'A-Z': <FaSortAlphaDown />,
+    'X': <RxCross2 />
 }

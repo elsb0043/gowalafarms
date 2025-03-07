@@ -18,7 +18,7 @@ function OurTeam() {
                 <p>De ansatte på Gowala Farms er passionerede fagfolk, der med omsorg og ekspertise sikrer sunde dyr og produkter af højeste kvalitet.</p>
             </div>
             <div className={styles.teamCards}>
-                {employees.map((em) => (
+                {employees.map(em => (
                     <div key={em._id} className={styles.teamBorder}>
                         <div className={styles.teamCard}>
                             <img src={em.image} alt={em.name} />

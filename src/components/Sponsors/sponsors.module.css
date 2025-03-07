@@ -1,0 +1,25 @@
+/* Mobile-first */
+.swiperContainer {
+    width: 100%;
+    height: 20rem;
+    background-color: #EFF4F8;
+
+    .swiperContent {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+
+        img {
+            width: 15rem;
+            height: 15rem;
+            object-fit: contain;
+        }
+    }
+}
+
+/* Desktop */
+@media (min-width: 768px) {
+    .swiperContainer {
+        height: 25rem;
+    }
+}

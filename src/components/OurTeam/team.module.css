@@ -1,10 +1,15 @@
+/* Mobile-first */
 .team {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     flex-wrap: wrap;
-    margin: 4rem 1rem 4rem 1rem;
+    padding: 4rem 1rem 4rem 1rem;
+    background-image: url('/assets/blob_02.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 
     .teamText {
         display: flex;
@@ -29,6 +34,8 @@
         p {
             margin-bottom: 5rem;
             font-size: 1.5rem;
+            line-height: 1.6;
+            margin-top: 1rem;
         }
     }
 
@@ -111,4 +118,32 @@
             }
         }
     }
+}
+
+
+/* Desktop */
+@media (min-width: 768px) {
+    .team {
+        .teamText {
+            h2 {
+                font-size: 4rem;
+            }
+    
+            h3 {
+                max-width: 100%;
+            }
+    
+            p {
+                font-size: 1.6rem;
+                max-width: 85rem;
+                line-height: 2.4;
+            }
+        }
+    
+        .teamCards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            place-content: center center;
+        }
+    }  
 }

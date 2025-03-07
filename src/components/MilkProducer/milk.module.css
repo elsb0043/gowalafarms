@@ -1,3 +1,4 @@
+/* Mobile-first */
 .milk {
     display: flex;
     justify-content: center;
@@ -51,14 +52,42 @@
             }
 
             h3 {
-                font-weight: 500;
+                font-weight: bold;
             }
 
             p {
                 font-size: 1.3rem;
                 margin: 0 3.5rem 0 3.5rem;
                 text-align: center;
+                line-height: 1.4;
             }
         }
     }
+}
+
+
+/* Desktop */
+@media (min-width: 768px) {
+    .milk {
+        .milkText {
+            h3 {
+                font-size: 3.3rem;
+            }
+        }
+
+        .milkCards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-areas: 
+                "card1 card2"
+                "card3 card3";
+            gap: 3rem;
+            justify-content: center;
+            margin-bottom: 4rem;
+        }
+
+        .milkCard:nth-child(1) { grid-area: card1; }
+        .milkCard:nth-child(2) { grid-area: card2; }
+        .milkCard:nth-child(3) { grid-area: card3; justify-self: center; }
+    } 
 }

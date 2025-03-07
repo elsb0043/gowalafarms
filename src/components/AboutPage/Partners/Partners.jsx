@@ -1,4 +1,4 @@
-import Button from '../../Button/Button'
+import Sponsors from '../../Sponsors/Sponsors'
 import styles from './partners.module.css'
 
 function Partners() {
@@ -11,10 +11,7 @@ function Partners() {
                 <p>Hos Gowala Farms samarbejder vi med nøje udvalgte partnere, der deler vores værdier om kvalitet, bæredygtighed og dyrevelfærd. Gennem disse partnerskaber sikrer vi, at vores produkter altid lever op til de højeste standarder.</p>
             </div>
             <div className={styles.partnersContent}>
-                <div className={styles.partnersContentIMG}>
-                    <img src="/assets/sponsors/01.png" />
-                    <img src="/assets/sponsors/02.png" />
-                </div>
+                <Sponsors />
             </div>
         </div>
     )

@@ -1,3 +1,4 @@
+/* Mobile-first */
 .cow {
     display: flex;
     justify-content: center;
@@ -30,6 +31,7 @@
     
             p {
                 font-size: 1.4rem;
+                line-height: 1.6;
             }
 
             .cowList {
@@ -51,6 +53,39 @@
                     }
                 }
             }
+        }
+    }
+}
+
+
+/* Desktop */
+@media (min-width: 768px) {
+    .cowAPIS {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: 3rem;
+
+        .cowAPISContent {
+            gap: 2rem;
+
+            img {
+                max-width: 100rem !important;
+                height: 60rem !important;
+            }
+
+            .cowAPISContentText {
+                margin-top: -2rem;
+            }
+        }
+
+        .cowAPISContent:nth-child(1),
+        .cowAPISContent:nth-child(3) {
+            flex-direction: row; 
+        }
+
+        .cowAPISContent:nth-child(2) {
+            flex-direction: row-reverse; 
         }
     }
 }

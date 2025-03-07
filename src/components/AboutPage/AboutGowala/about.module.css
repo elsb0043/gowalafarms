@@ -1,3 +1,4 @@
+/* Mobile-first */
 .aboutContainer {
     display: flex;
     justify-content: center;
@@ -24,12 +25,13 @@
             }
     
             h3 {
-                font-weight: 500;
+                font-weight: bold;
                 margin: 2rem 0 2rem 0;
             }
     
             p {
                 font-size: 1.4rem;
+                line-height: 1.6;
             }
 
             .aboutList {
@@ -49,6 +51,36 @@
                         border: #5E9A13;
                         border-radius: 0.4rem;
                     }
+                }
+            }
+        }
+    }
+}
+
+
+/* Desktop */
+@media (min-width: 768px) {
+    .aboutContainer {
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+        margin-top: 4rem;
+    
+        .aboutContent {
+            .aboutContentAPI {
+                display: flex;
+                flex-direction: row-reverse;
+
+                .aboutContentAPIText {
+                    margin: -2rem 0 0 0;
+                }
+        
+                img {
+                    height: 50rem;
+                }
+
+                p {
+                    max-width: 90%;
                 }
             }
         }

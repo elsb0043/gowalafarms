@@ -1,3 +1,4 @@
+/* Mobile-first */
 .newsletterContainer {
     display: flex;
     justify-content: center;
@@ -36,10 +37,11 @@
 
             h2 {
                 font-size: 2.7rem;
+                font-weight: bold;
             }
 
             h3 {
-                color: #4c7e0f;
+                color: #5E9A13;
                 font-size: 2.5rem;
                 font-weight: 500;
                 max-width: 20rem;
@@ -48,6 +50,7 @@
             p {
                 padding-top: 5rem;
                 max-width: 25rem;
+                line-height: 1.4;
             }
         }
 
@@ -110,6 +113,52 @@
             h3 {
                 color: #5E9A13;
 
+            }
+        }
+    }
+}
+
+
+/* Desktop */
+@media (min-width: 768px) {
+    .newsletterContainer {
+        width: 100%;
+    
+        .newsletterContent {
+            height: 70vh;
+            width: 100%;
+    
+            .newsletterContentText {
+                height: 30vh;
+    
+                h3 {
+                    max-width: 100%;
+                }
+    
+                p {
+                    padding-top: 1rem;
+                    max-width: 100%;
+                }
+            }
+    
+            input {
+                width: 95vw;
+                margin: 2rem 3rem 2rem 3rem;
+            }
+    
+            button {
+                padding: 1.5rem 13rem 1.5rem 13rem;
+                width: 95vw;
+                margin-left: 3rem;
+            }
+        }
+    
+        .successMessageContainer {
+            width: 100%;
+    
+            .successMessageContent {
+                height: 70vh;
+                width: 100%;
             }
         }
     }

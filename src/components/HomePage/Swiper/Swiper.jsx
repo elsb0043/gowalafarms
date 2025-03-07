@@ -1,6 +1,6 @@
 import styles from "./swiper.module.css"
 import { Swiper, SwiperSlide } from "swiper/react"
-import { EffectCoverflow, Autoplay, Navigation } from "swiper/modules"
+import { Autoplay, Navigation } from "swiper/modules"
 import "swiper/css"
 import "swiper/swiper-bundle.css"
 import "swiper/css/effect-coverflow"
@@ -18,10 +18,9 @@ function Slider() {
   return (
     <>
       <Swiper
-        modules={[EffectCoverflow, Autoplay, Navigation]}
+        modules={[Autoplay, Navigation]}
         navigation
         style={{
-            "--swiper-pagination-color": "#5E9A13",
             "--swiper-navigation-color": "#5E9A13",
         }}
         autoplay={{

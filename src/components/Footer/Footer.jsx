@@ -37,8 +37,9 @@ function Footer() {
                 </div>
             </div>
             <div className={styles.allRightsReserved}>
-                © 2024 Gowala. All rights Reserved By
-                LabArtisian & Viborg Media College
+                © 2024 <span className={styles.greenText}>Gowala.</span> All rights Reserved By
+                <span className={styles.greenText}> LabArtisian</span> & 
+                <span className={styles.greenText}> Viborg Media College</span>
             </div>
         </footer>
     )
