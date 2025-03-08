@@ -27,7 +27,8 @@
                 color: #fff;
                 border: #5E9A13;
                 border-radius: 10rem;
-                margin-right: -20rem;
+                margin-right: -21rem;
+                margin-top: -1rem;
                 font-family: "Poppins", sans-serif;
             }
 
@@ -43,6 +44,7 @@
             h2 {
                 color: #5E9A13;
                 font-size: 3rem;
+                margin-bottom: 2rem;
             }
         }
     }

@@ -71,7 +71,6 @@ export const AuthContextProvider = ({ children }) => {
     })
 
     let result = await response.json()
-    console.log(result)
 
     const user = jwtDecode(result.data.token) // Dekodér brugeren fra tokenen
 

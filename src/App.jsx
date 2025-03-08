@@ -1,6 +1,6 @@
 import { useLocation, useRoutes } from "react-router-dom"
 import { useAuthContext } from "./context/useAuthContext"
-import { BackofficeMessages, BackofficeProducts } from "./pages/Backoffice/BackofficeItems"
+import { BackofficeEmployees, BackofficeProducts } from "./pages/Backoffice/BackofficeItems"
 import Navigation from "./components/Navigation/Navigation"
 import HomePage from "./pages/Home"
 import ShopPage from "./pages/Shop"
@@ -13,7 +13,7 @@ import ProtectedRoute from "./components/ProtectedRoute"
 import Backoffice from "./pages/Backoffice/Backoffice"
 import Login from "./components/BackofficePage/Login/Login"
 import ProductForm from "./pages/Backoffice/Forms/ProductForm"
-import MessageForm from "./pages/Backoffice/Forms/MessageForm"
+import EmployeesForm from "./pages/Backoffice/Forms/EmployeeForm"
 
 function App() {
   // Henter authentication state via custom hook useAuth
@@ -78,16 +78,16 @@ function App() {
           ],
         },
         {
-          path: "messages", 
-          element: <BackofficeMessages />,
+          path: "employees", 
+          element: <BackofficeEmployees />,
           children: [
             {
               path: "add",
-              element: <MessageForm />,
+              element: <EmployeesForm />,
             },
             {
               path: "edit/:id", 
-              element: <MessageForm isEditMode={true} />,
+              element: <EmployeesForm isEditMode={true} />,
             },
           ],
         },

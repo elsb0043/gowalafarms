@@ -13,9 +13,9 @@ const BackofficeNavigation = () => {
       </li>
       <li>
         <NavLink
-          to='/backoffice/messages'
+          to='/backoffice/employees'
           className={({ isActive }) => (isActive ? styles.active : "")}>
-          Beskeder
+          Hold
         </NavLink>
       </li>
     </ul>

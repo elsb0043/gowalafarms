@@ -1,33 +1,33 @@
 import { useCallback, useEffect, useState } from "react"
 import { useAuthContext } from "../context/useAuthContext"
 
-const useFetchMessages = () => {
-    const [messages, setMessages] = useState([])
+const usefetchSubscribers = () => {
+    const [subscribers, setSubscribers] = useState([])
     const [error, setError] = useState(null)
     const [isLoading, setIsLoading] = useState(false)
     const { token } = useAuthContext()
 
-    // HENT ALLE BESKEDER 
-    const fetchMessages = useCallback(async () => {
+    // HENT ALLE SUBSCRIBERS 
+    const fetchSubscribers = useCallback(async () => {
         setError(null)
         setIsLoading(true)
         try {
-            const response = await fetch("http://localhost:3042/messages")
+            const response = await fetch("http://localhost:3042/subscribers")
             const data = await response.json()
-            setMessages(data.data)
+            setSubscribers(data.data)
         } catch (error) {
             setError(error.message)
-            console.error("Error fetching messages:", error)
+            console.error("Error fetching subscribers:", error)
         } finally {
             setIsLoading(false)
         }
     }, [])
 
     
-    // OPRET BESKEDER
-    const createMessage = async (formData) => {
+    // OPRET SUBSCRIBERS
+    const createSubscriber = async (formData) => {
         try {
-            const response = await fetch("http://localhost:3042/message", {
+            const response = await fetch("http://localhost:3042/subscriber", {
                 method: "POST",
                 headers: {
                     Authorization: `Bearer ${token}`,
@@ -35,7 +35,7 @@ const useFetchMessages = () => {
                 body: formData,
             })
             if (!response.ok) {
-                throw new Error("Fejl ved oprettelse af beskeder") 
+                throw new Error("Fejl ved oprettelse af hold") 
             }
 
             const result = await response.json()
@@ -47,10 +47,10 @@ const useFetchMessages = () => {
     }
 
 
-    // OPDATER BESKEDER
-    const updateMessage = async (formData) => {
+    // OPDATER SUBSCRIBERS
+    const updateSubscriber = async (formData) => {
         try {
-            const response = await fetch("http://localhost:3042/message", {
+            const response = await fetch("http://localhost:3042/subscriber", {
                 method: "PUT",
                 headers: {
                     Authorization: `Bearer ${token}`, 
@@ -58,7 +58,7 @@ const useFetchMessages = () => {
                 body: formData,
             })
             if (!response.ok) {
-                throw new Error("Fejl ved opdatering af beskeder")
+                throw new Error("Fejl ved opdatering af hold")
             }
             const result = await response.json()
             return result
@@ -69,68 +69,68 @@ const useFetchMessages = () => {
     }
 
 
-    // SLET BESKEDER
-    const deleteMessage = async (params) => {
+    // SLET SUBSCRIBERS
+    const deleteSubscriber = async (params) => {
         
         try {
-            await fetch(`http://localhost:3042/message/${params}`, {
+            await fetch(`http://localhost:3042/subscriber/${params}`, {
                 method: "DELETE",
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
             })
 
-            const filteredArray = messages.filter((me) => me._id !== params)
-            setMessages(filteredArray)
+            const filteredArray = subscribers.filter((ar) => ar._id !== params)
+            setSubscribers(filteredArray)
         } catch (error) {
             console.error("Fejl ved sletning:", error)
         }
     }
 
 
-    // HENT BESKEDER BASERET PÅ ID
-    const fetchMessageById = async (id) => {
+    // HENT SUBSCRIBERS BASERET PÅ ID
+    const fetchSubscriberById = async (id) => {
         setError(null)
         setIsLoading(true)
     
         try {
-            const response = await fetch(`http://localhost:3042/message/${id}`)
+            const response = await fetch(`http://localhost:3042/subscriber/${id}`)
     
             if (!response.ok) {
                 const errorText = await response.text()
-                throw new Error(`Failed to fetch message: ${errorText}`)
+                throw new Error(`Failed to fetch subscriber: ${errorText}`)
             }
     
-            const message = await response.json()
-            return message.data[0]
+            const subscriber = await response.json()
+            return subscriber.data[0]
         } catch (error) {
             setError(error.message)
-            console.error("Error fetching message:", error)
+            console.error("Error fetching subscriber:", error)
         } finally {
             setIsLoading(false) 
         }
     }
 
     const refetch = useCallback(() => {
-        fetchMessages()
-    }, [fetchMessages])
+        fetchSubscribers()
+    }, [fetchSubscribers])
     
     useEffect(() => {
-        fetchMessages()
+        fetchSubscribers()
     }, [])
     
     return {
-        messages,
-        setMessages,
-        fetchMessages,
-        fetchMessageById,
-        createMessage,
-        updateMessage,
-        deleteMessage,
+        subscribers,
+        setSubscribers,
+        fetchSubscribers,
+        fetchSubscriberById,
+        createSubscriber,
+        updateSubscriber,
+        deleteSubscriber,
         isLoading,
         refetch,
         error,
     }
 }
 
-export { useFetchMessages }
+export { usefetchSubscribers }

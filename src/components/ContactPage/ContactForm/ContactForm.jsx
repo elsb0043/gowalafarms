@@ -10,9 +10,9 @@ const ContactForm = () => {
 
     const validate = () => {
         let newErrors = {}
-        if (!formData.name.trim()) newErrors.name = "Name is required"
-        if (!formData.email.includes("@")) newErrors.email = "Invalid email"
-        if (!formData.message.trim()) newErrors.message = "Message is required"
+        if (!formData.name.trim()) newErrors.name = "Navn er påkrævet"
+        if (!formData.email.includes("@")) newErrors.email = "Ugyldig email"
+        if (!formData.message.trim()) newErrors.message = "Besked er påkrævet"
         return newErrors
     }
 
@@ -26,17 +26,30 @@ const ContactForm = () => {
         setErrors({})
 
         try {
-            const res = await fetch("/contact", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(formData),
-            })
-            const data = await res.json()
-            setResponse(data.message || "Your message has been sent successfully!")
+            await new Promise((resolve) => setTimeout(resolve, 500))
+
+            const { name } = formData
+    
+            setResponse(`Hej ${name}! Din besked er blevet sendt.`)
             setSent(true)
         } catch {
-            setResponse("An error occurred. Please try again.")
+            setResponse("Der opstod en fejl. Prøv venligst igen.")
+        }    
+
+        const { name, email, message } = formData
+
+        const contactData = {
+            name,
+            email,
+            message,
+            date: new Date().toISOString()
         }
+
+        const contactFormular = JSON.parse(localStorage.getItem('contactHistory')) || []
+
+        localStorage.setItem('contactHistory', JSON.stringify([...contactFormular, contactData]))
+
+        setFormData({ name: "", email: "", message: "" })
     }
 
     return (

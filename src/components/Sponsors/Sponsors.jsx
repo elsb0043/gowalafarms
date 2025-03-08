@@ -43,6 +43,13 @@ function Sponsors() {
             spaceBetween: 60, 
           }
         }}
+        coverflowEffect={{
+          rotate: 0,
+          stretch: 0,
+          depth: 200,
+          modifier: 1.5,
+          slideShadows: false,
+        }}
       >
         {images.map((img, index) => (
           <SwiperSlide key={index} className={styles.swiperContent}>

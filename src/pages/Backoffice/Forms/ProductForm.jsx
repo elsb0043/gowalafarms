@@ -10,7 +10,6 @@ const ProductForm = ({ isEditMode }) => {
     const [price, setPrice] = useState("")
     const [image, setImage] = useState(null)
     const [selectedFile, setSelectedFile] = useState(null) // Gemmer det valgte billede
-
     const { refetch } = useOutletContext() // Henter refetch-funktionen fra Outlet Context
     const navigate = useNavigate() // Bruges til at navigere til andre sider
     const { id } = useParams() // Henter ID fra URL'en

@@ -4,7 +4,7 @@ import Button from '../../Button/Button'
 import ProductCard from '../../ProductCard/ProductCard'
 import styles from './products.module.css'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { Pagination } from 'swiper/modules'
+import { Autoplay, Pagination } from 'swiper/modules'
 import 'swiper/swiper-bundle.css'
 
 function OurProducts() {
@@ -31,42 +31,48 @@ function OurProducts() {
 
                 {/* Desktop Swiper Slider */}
                 <div className={styles.productsSlider}>
-                    <Swiper
-                        modules={[Pagination]}
-                        pagination={{
-                            clickable: true, 
-                            renderBullet: (index, className) => {
-                                return `<span class="${className}"></span>`;
-                            }
-                        }}
-                        style={{
-                            "--swiper-pagination-color": "#5E9A13",
-                        }}
-                        spaceBetween={20}
-                        slidesPerView={1}
-                        breakpoints={{
-                            768: {
-                                slidesPerView: 1,
-                            },
-                        }}
-                    >
-                        {displayedProducts.map((product) => (
-                            <SwiperSlide key={product._id}>
-                                <div className={styles.sliderProductsCards}>
-                                    <div key={product._id} className={styles.sliderProductsBorder}>
-                                        <div className={styles.sliderProductsCard}>
-                                            <div className={styles.sliderProcent}>60%</div>
+                    <div className={styles.sliderProductsCards}>
+                        <div className={styles.sliderProductsBorder}>
+                            <div className={styles.sliderProductsCard}>
+                                <div className={styles.sliderProcent}>60%</div>
+                                <Swiper
+                                    modules={[Autoplay, Pagination]}
+                                    pagination
+                                    style={{
+                                        "--swiper-pagination-color": "#5E9A13",
+                                        "--swiper-pagination-bottom": "15rem",
+                                        "--swiper-pagination-bullet-size": "2rem",
+                                        "--swiper-pagination-bullet-horizontal-gap": "1rem",
+                                    }}
+                                    autoplay={{
+                                        delay: 2000,
+                                        disableOnInteraction: false,
+                                    }}
+                                    spaceBetween={20}
+                                    slidesPerView={1}
+                                    breakpoints={{
+                                        768: {
+                                            slidesPerView: 1,
+                                        },
+                                    }}
+                                    effect="slide"
+                                    speed={1000}
+                                    centeredSlides={true}
+                                    loop={true}
+                                >
+                                    {displayedProducts.map((product) => (
+                                        <SwiperSlide key={product._id} style={{ height: '100vh' }}>
                                             <img src={product.image} alt={product.title} />
                                             <h3>{product.title}</h3>
                                             <h2>{product.price},-</h2>
-                                            {/* Pagination will be here inside the sliderProductsCard */}
-                                        </div>
-                                    </div>
-                                </div>
-                            </SwiperSlide>
-                        ))}
-                    </Swiper>
+                                        </SwiperSlide>
+                                    ))}
+                                </Swiper>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
             </div>
 
             <Link to="/shop">

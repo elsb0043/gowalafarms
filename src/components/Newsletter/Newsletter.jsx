@@ -1,13 +1,25 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import styles from './news.module.css'
 
 function Newsletter() {
     const [email, setEmail] = useState('')
     const [isSubmitted, setIsSubmitted] = useState(false)
 
+    // Tjek, om e-mailen allerede er gemt i localStorage, når komponenten monteres
+    useEffect(() => {
+        const savedEmail = localStorage.getItem('subscribedEmail')
+        if (savedEmail) {
+            setIsSubmitted(true) // Hvis e-mailen findes, skal du indstille formularen til tilstanden "indsendt"
+        }
+    }, [])
+
     const handleSubmit = (e) => {
         e.preventDefault()
-        
+
+        // Gem e-mailen i localStorage
+        localStorage.setItem('subscribedEmail', email)
+
+        // Indstil formularen til tilstanden "indsendt"
         setIsSubmitted(true)
     }
 
@@ -35,7 +47,7 @@ function Newsletter() {
                 <div className={styles.successMessageContainer}>
                     <div className={styles.successMessageContent}>
                         <h2>Tak for din tilmelding!</h2>
-                        <h3>Du har nu tilmeldt dig vores nyhedsbrevet.</h3>
+                        <h3>Du har nu tilmeldt dig vores nyhedsbrev.</h3>
                     </div>
                 </div>
             )}

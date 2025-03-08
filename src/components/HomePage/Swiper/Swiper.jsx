@@ -24,7 +24,7 @@ function Slider() {
             "--swiper-navigation-color": "#5E9A13",
         }}
         autoplay={{
-          delay: 3000,
+          delay: 2000,
           disableOnInteraction: false,
         }}
         effect='slide'
