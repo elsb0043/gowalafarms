@@ -3,6 +3,8 @@ import { jwtDecode } from "jwt-decode"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 
+/* En hook til at håndtere login og logout, gemme autentificeringsdata i localStorage og tilbyde funktioner til at administrere brugerens login-status */
+
 const useAuth = () => {
     // States til e-mail og adgangskodeinput
     const [email, setEmail] = useState("") // Holder styr på e-mailfeltet
@@ -14,7 +16,7 @@ const useAuth = () => {
 
     // Funktion til at logge brugeren ind
     const signIn = async (e) => {
-        e.preventDefault() // Forhindrer standard formular-indsending (Det er som at sige "Nej tak" til noget, der normalt ville ske)
+        e.preventDefault() // Forhindrer standard formular-indsending - laver din egen logik i stedet for standardopførsel (Det er som at sige "Nej tak" til noget, der normalt ville ske)
         setError("") // Nulstiller fejlmeddelelser før nyt loginforsøg
 
         try {

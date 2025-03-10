@@ -1,6 +1,8 @@
 import { useCallback, useEffect, useState } from "react"
 import { useAuthContext } from "../context/useAuthContext"
 
+/* En hook, der effektivt håndterer produktdata og API-kald med state-håndtering og memoisering for bedre performance */
+
 const useFetchProducts = () => {
     // State til at gemme produkter, fejlbeskeder og loading-status
     const [products, setProducts] = useState([]) // Når komponenten først rendes, har vi ikke nogen produkter at vise, så vi initialiserer produkterne som et tomt array [] (products gemmer produktdate)
