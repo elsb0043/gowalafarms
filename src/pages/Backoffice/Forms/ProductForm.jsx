@@ -6,126 +6,123 @@ import Button3 from "../../../components/Button/Button3"
 
 const ProductForm = ({ isEditMode }) => {
     // State til at gemme formularens inputværdier
-    const [title, setTitle] = useState("")
-    const [price, setPrice] = useState("")
-    const [image, setImage] = useState(null)
-    const [selectedFile, setSelectedFile] = useState(null) // Gemmer det valgte billede
+    const [title, setTitle] = useState("")  // Titel på produktet
+    const [price, setPrice] = useState("")  // Pris på produktet
+    const [image, setImage] = useState(null) // Billede af produktet
+    const [selectedFile, setSelectedFile] = useState(null) // Valgt billede fra inputfeltet
     const { refetch } = useOutletContext() // Henter refetch-funktionen fra Outlet Context
     const navigate = useNavigate() // Bruges til at navigere til andre sider
-    const { id } = useParams() // Henter ID fra URL'en
-    const { createProduct, fetchProductById, updateProduct } = useFetchProducts()
+    const { id } = useParams() // Henter produktets ID fra URL'en
+    const { createProduct, fetchProductById, updateProduct } = useFetchProducts() // API-funktioner
 
-    // Hent produkt hvis editMode er true
+    // Hent produktdata hvis vi er i redigeringstilstand (isEditMode) og ID er til stede
     useEffect(() => {
-        // Kører kun hvis editMode er true og id er defineret
         if (isEditMode && id) {
-            // Asynkron funktion, der henter produktets data fra en API
             const loadProductData = async () => {
                 try {
-                    // Hent data baseret på produktets id
-                    const response = await fetchProductById(id)
-    
-                    // Hvis vi får svar, sætter vi formularens værdier
+                    const response = await fetchProductById(id) // Henter produktet fra API'en
+
                     if (response) {
-                        setTitle(response.title) // Sætter produktsnavn
-                        setPris(response.price) // Sætter pris
-                        setImage(response.image) // Sætter billede
+                        // Sætter formularens inputfelter til produktdataene
+                        setTitle(response.title)
+                        setPrice(response.price)
+                        setImage(response.image) // Billede på produktet
                     }
                 } catch (error) {
-                    // Hvis der opstår en fejl under hentning af data, logges fejlen
-                    console.error("Error fetching product:", error)
+                    console.error("Error fetching product:", error) // Håndter fejl ved hentning af data
                 }
             }
-    
-            // Kald funktionen, der henter produktets data
-            loadProductData()
+            loadProductData() // Kald funktionen for at hente data
         }
-    }, [isEditMode, id, fetchProductById])
-    
+    }, [isEditMode, id, fetchProductById]) // Afhængighed af isEditMode og id
 
-    // FORHÅNDSVISNING AF BILLEDE
+    // Håndtering af billede (forhåndsvisning)
     const handleImageChange = (event) => {
-        const file = event.target.files[0]
+        const file = event.target.files[0] // Får filen, som blev valgt
         if (file) {
-            setSelectedFile(file) // Gemmer det valgte billede i state
+            setSelectedFile(file) // Gemmer den valgte fil i state
             const objUrl = window.URL.createObjectURL(file) // Opretter en URL til forhåndsvisning
-            setImage(objUrl) // Opdaterer billedet, så det kan forhåndsvises
+            setImage(objUrl) // Opdaterer billedet, så det kan vises i formularen
         }
     }
 
-    // HÅNDTERING AF FORMULAR-SUBMIT
+    // Håndtering af formularens submit
     const handleSubmitProduct = async (event) => {
-        event.preventDefault() // Forhindrer siden i at reloade ved submit
+        event.preventDefault() // Forhindrer default opførsel (siden bliver ikke opdateret)
 
-        // Opretter FormData-objekt til at sende data til API'et
+        // Opretter et FormData-objekt til at sende data (inkl. billede) til API'en
         const productData = new FormData()
-        productData.append("title", title)
-        productData.append("price", price)
+        productData.append("title", title) // Tilføjer titel til formdata
+        productData.append("price", price) // Tilføjer pris til formdata
 
-        // Tilføjer billedet hvis det er valgt
         if (selectedFile) {
-            productData.append("file", selectedFile)
+            productData.append("file", selectedFile) // Tilføjer filen (billede) hvis valgt
         }
 
         try {
             let response
             if (isEditMode && id) {
-                // Hvis det er redigeringstilstand, opdateres produktet
-                productData.append("id", id)
-                response = await updateProduct(productData)
+                productData.append("id", id) // Hvis vi er i redigeringstilstand, tilføjes ID
+                response = await updateProduct(productData) // Opdater produktet
             } else {
-                // Ellers oprettes et ny produkt
-                response = await createProduct(productData)
+                response = await createProduct(productData) // Opret et nyt produkt
             }
 
-            console.log (
-                isEditMode ? "Produkt er opdateret" : "Produkt er oprettet", 
+            console.log(
+                isEditMode ? "Produkt er opdateret" : "Produkt er oprettet",
                 response
             )
 
             if (response) {
-                await refetch() // Opdaterer produkterne efter ændringer
-                navigate("/backoffice/products") // Navigerer tilbage til produktsoversigten
+                await refetch() // Opdaterer produktlisten efter ændringer
+                navigate("/backoffice/products") // Navigerer tilbage til produktoversigten
             }
         } catch (error) {
-            console.error("Fejl ved håndtering af produkt:", error)
+            console.error("Fejl ved håndtering af produkt:", error) // Håndter eventuelle fejl
         }
     }
 
     return (
         <form onSubmit={handleSubmitProduct} className={styles.form}>
+            {/* Formularoverskrift baseret på om vi er i redigeringstilstand */}
             <h2>{isEditMode ? "Opdater produkt" : "Tilføj produkt"}</h2>
+
             <div>
+                {/* Billedeinput med forhåndsvisning */}
                 <div>
                     <label htmlFor='image'>Vælg billede (valgfrit):</label>
-                    {image && <img className={styles.previewImage} src={image} />}
-                    <input id='image' type='file' onChange={handleImageChange} />
+                    {image && <img className={styles.previewImage} src={image} />} {/* Forhåndsvisning af billede */}
+                    <input id='image' type='file' onChange={handleImageChange} /> {/* Input til billede */}
                 </div>
-                {/* Når htmlFor matcher id på input, fokuseres input, når man klikker på label */}
+
+                {/* Input til titel */}
                 <label htmlFor='title'>Titel:</label>
                 <input
                     id='title'
                     type='text'
                     value={title}
-                    onChange={(e) => setTitle(e.target.value)}
+                    onChange={(e) => setTitle(e.target.value)} // Opdaterer titel
                     required
                 />
             </div>
+
             <div>
+                {/* Input til pris */}
                 <label htmlFor='price'>Pris:</label>
                 <input
                     id='price'
                     type='text'
                     value={price}
-                    onChange={(e) => setPrice(e.target.value)}
+                    onChange={(e) => setPrice(e.target.value)} // Opdaterer pris
                     required
                 />
             </div>
 
+            {/* Knap til at submitte formularen */}
             <Button3
-                type='type'
+                type='submit' // Sørg for at submit-type er korrekt
                 buttonText={isEditMode ? "Opdater et produkt" : "Tilføj et produkt"}
-                background={!isEditMode && "green"}
+                background={!isEditMode && "green"} // Grønt for tilføjelse, ingen baggrund for opdatering
             />
         </form>
     )

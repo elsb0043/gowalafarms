@@ -57,16 +57,16 @@ const useAuth = () => {
 
     // Returnerer alle nødvendige værdier og funktioner for at håndtere autentificering
     return {
-        signIn, // Login-funktion
-        signedIn, // Boolesk værdi: Er brugeren logget ind?
-        signOut, // Logout-funktion
-        token, // JWT token
-        email, // E-mailfeltets værdi
-        setEmail, // Funktion til at opdatere e-mail
-        password, // Adgangskodefeltets værdi
-        setPassword, // Funktion til at opdatere adgangskode
-        user, // Brugerdata (dekodet fra token)
-        error, // Fejlmeddelelse
+        signIn,          // Login-funktion
+        signedIn,        // Boolesk værdi: Er brugeren logget ind?
+        signOut,         // Logout-funktion
+        token,           // JWT token
+        email,           // E-mailfeltets værdi
+        setEmail,        // Funktion til at opdatere e-mail
+        password,        // Adgangskodefeltets værdi
+        setPassword,     // Funktion til at opdatere adgangskode
+        user,            // Brugerdata (dekodet fra token)
+        error,           // Fejlmeddelelse
     }
 }
 
