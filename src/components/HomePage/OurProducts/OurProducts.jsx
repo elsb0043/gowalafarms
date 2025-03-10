@@ -12,7 +12,7 @@ function OurProducts() {
     const { products = [] } = useFetchProducts() // Sørg for, at produkter altid er et array
 
     // Får kun de første 4 produkter fra listen af produkter
-    const displayedProducts = products.slice(0, 4)
+    const displayedProducts = products.slice(0, 4) // slice bruges til at tage et stykke af en liste (array) (0, 4 = 4 stykker)
 
     return (
         <div className={styles.products}>

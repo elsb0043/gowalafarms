@@ -3,9 +3,9 @@ import { useAuthContext } from "../context/useAuthContext"
 
 const useFetchProducts = () => {
     // State til at gemme produkter, fejlbeskeder og loading-status
-    const [products, setProducts] = useState([]) // Når komponenten først rendes, har vi ikke nogen produkter at vise, så vi initialiserer produkterne som et tomt array []
+    const [products, setProducts] = useState([]) // Når komponenten først rendes, har vi ikke nogen produkter at vise, så vi initialiserer produkterne som et tomt array [] (products gemmer produktdate)
     const [error, setError] = useState(null) // Når komponenten først rendes, antager vi, at der ikke er nogen fejl, så vi sætter error til null
-    const [isLoading, setIsLoading] = useState(false) // Når komponenten først rendes, er vi ikke i gang med at hente data, så isLoading sættes til false
+    const [isLoading, setIsLoading] = useState(false) // Når komponenten først rendes, er vi ikke i gang med at hente data, så isLoading sættes til false (isLoading er en boolean for loading-status)
     
     // Henter token fra auth-contexten (bruges til autentificering i API-kald)
     const { token } = useAuthContext()
@@ -128,17 +128,17 @@ const useFetchProducts = () => {
         }
     }
 
-    // Memoiseret funktion til at kalde `fetchProducts` igen
+    // Memoiseret funktion til at kalde `fetchProducts` igen (Husker hvordan du henter produkterne)
     const refetch = useCallback(() => {
-        fetchProducts()
-    }, [fetchProducts]) // Afhængig af `fetchProducts`
+        fetchProducts() // Henter produkterne
+    }, [fetchProducts]) // Hvis fetchProducts ændrer sig, lærer knappen at hente på den nye måde
 
     // Kalder `fetchProducts` ved første render (eller når komponenten monteres)
     useEffect(() => {
-        fetchProducts()
-    }, []) // Tom array - kaldes kun én gang ved første render
+        fetchProducts() // Henter produkterne
+    }, []) // Tom array - kaldes kun én gang ved første render (Tom array betyder "Gør det kun én gang")
 
-    // Returnerer alle funktioner og state-variabler**  
+    // Returnerer alle funktioner og state-variabler 
     return {
         products,          // Liste over produkter
         setProducts,       // Funktion til at opdatere produkterne manuelt

@@ -14,7 +14,7 @@ const useAuth = () => {
 
     // Funktion til at logge brugeren ind
     const signIn = async (e) => {
-        e.preventDefault() // Forhindrer standard formular-indsending
+        e.preventDefault() // Forhindrer standard formular-indsending (Det er som at sige "Nej tak" til noget, der normalt ville ske)
         setError("") // Nulstiller fejlmeddelelser før nyt loginforsøg
 
         try {
