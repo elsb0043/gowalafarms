@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react"
 import { useAuthContext } from "../context/useAuthContext"
 
-/* En hook, der effektivt håndterer produktdata og API-kald med state-håndtering og memoisering for bedre performance */
+/* En hook, der effektivt håndterer produktdata og API-kald med state-håndtering og genbrug af funktioner (memoisering) for bedre performance */
 
 const useFetchProducts = () => {
     // State til at gemme produkter, fejlbeskeder og loading-status
@@ -13,7 +13,7 @@ const useFetchProducts = () => {
     const { token } = useAuthContext()
 
     // HENT ALLE PRODUKTER
-    // useCallback bruges til at memoize funktionen, så den ikke oprettes på ny ved hver render
+    // useCallback gør, at funktionen genbruges i stedet for at blive lavet på ny ved hver rendering (memoize)
     const fetchProducts = useCallback(async () => {
         setError(null) // Nulstiller tidligere fejl
         setIsLoading(true) // Viser loading-status
