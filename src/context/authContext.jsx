@@ -3,7 +3,7 @@ import { createContext, useEffect } from "react"
 import { jwtDecode } from "jwt-decode"
 import { useNavigate, useLocation } from "react-router-dom" 
 
-// Opretter en AuthContext, der bruges til at dele autentificeringsdata globalt
+// Opretter en AuthContext, der bruges til at dele autentificeringsdata globalt i stedet for at sende data fra komponent til komponent via props.
 export const AuthContext = createContext() // Opretter en kontekst, som komponenter kan bruge til at få adgang til autentificeringsdata
 
 // AuthContextProvider komponenten, der styrer og deler autentificeringsstatus med børnene
