@@ -3,30 +3,19 @@ import Button2 from "../../Button/Button2"
 import styles from "./form.module.css"
 
 const ContactForm = () => {
-    // State til at gemme form data (navn, email, besked)
-    const [formData, setFormData] = useState({ name: "", email: "", message: "" })
-
-    // State til at gemme svarmeddelelse, f.eks. succes eller fejl
-    const [response, setResponse] = useState(null)
-
-    // State til at gemme fejlbeskeder, som opstår ved validering
-    const [errors, setErrors] = useState({})
-
-    // State til at holde styr på, om beskeden er sendt
-    const [sent, setSent] = useState(false)
+    const [formData, setFormData] = useState({ name: "", email: "", message: "" }) // State til at gemme form data (navn, email, besked)
+    const [response, setResponse] = useState(null) // State til at gemme svarmeddelelse, f.eks. succes eller fejl
+    const [errors, setErrors] = useState({}) // State til at gemme fejlbeskeder, som opstår ved validering
+    const [sent, setSent] = useState(false) // State til at holde styr på, om beskeden er sendt
 
     // Funktion til at validere formularen
     const validate = () => {
         let newErrors = {}
 
-        // Tjek om navn er tomt
-        if (!formData.name.trim()) newErrors.name = "Navn er påkrævet"
-
-        // Tjek om email er valid
-        if (!formData.email.includes("@")) newErrors.email = "Ugyldig email"
-
-        // Tjek om besked er tom
-        if (!formData.message.trim()) newErrors.message = "Besked er påkrævet"
+        // Hvis der er noget galt med de indtastede data (fx et tomt navn eller en ugyldig email), bliver der lagt en fejlbesked i newErrors-objektet
+        if (!formData.name.trim()) newErrors.name = "Navn er påkrævet" // Tjek om navn er tomt (trim( fjerner ekstra mellemrum før og efter en tekststreng))
+        if (!formData.email.includes("@")) newErrors.email = "Ugyldig email" // Tjek om email er valid
+        if (!formData.message.trim()) newErrors.message = "Besked er påkrævet" // Tjek om besked er tom
 
         return newErrors
     }
@@ -37,7 +26,9 @@ const ContactForm = () => {
 
         // Validér formularen, og hvis der er fejl, opdater fejlbeskederne
         const validationErrors = validate()
-        if (Object.keys(validationErrors).length > 0) {
+
+        // Object.keys() returnere en liste med nøglerne: ["name", "email"]
+        if (Object.keys(validationErrors).length > 0) { // Object en måde at gemme data i "nøgleværdi"-par, fx "name" og "John", og keys bruges til at hente alle nøglerne fra et objekt som en liste (array), fx { name: "John", email: gmail.com }
             setErrors(validationErrors)
             return
         }
@@ -45,7 +36,7 @@ const ContactForm = () => {
         setErrors({})
 
         try {
-            // Simulerer en API-anmodning ved at bruge setTimeout
+            // Promise hjælper dig med at håndtere tidspunkter, hvor du skal vente på noget (som f.eks. en forsinkelse eller en serveranmodning)
             await new Promise((resolve) => setTimeout(resolve, 500))
 
             const { name } = formData

@@ -14,7 +14,7 @@ function Order() {
     const [isSubmitted, setIsSubmitted] = useState(false)
 
     // Beregner totalbeløbet af produkterne i kurven
-    const total = basket.reduce((acc, product) => acc + product.price, 0) // reduce går gennem hvert produkt og lægger deres priser sammen (acc er en værdi, som starter på 0)
+    const total = basket.reduce((acc, product) => acc + product.price, 0) // reduce går gennem hvert produkt og lægger deres priser sammen (acc (accumulator) er en værdi, som starter på 0)
 
     // Funktion til at håndtere formularens submit
     const handleSubmit = (e) => {
