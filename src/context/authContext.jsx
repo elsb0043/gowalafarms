@@ -15,6 +15,7 @@ export const AuthContextProvider = ({ children }) => {
   const location = useLocation() // Hook der giver den nuværende URL-path
   const navigate = useNavigate() // Hook der giver mulighed for at navigere til andre sider
 
+  // useEffect tjekker, om brugeren er på en backoffice-side og ikke på login-siden
   useEffect(() => {
     // Denne useEffect kører hver gang pathen ændrer sig
     const checkUser = async () => {
