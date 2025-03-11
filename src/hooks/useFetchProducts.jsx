@@ -34,7 +34,7 @@ const useFetchProducts = () => {
         } finally {
             setIsLoading(false) // Skjuler loading-status (uanset succes eller fejl)
         }
-    }, []) // Tom array → funktionen bliver kun oprettet én gang (medmindre afhængigheder ændres)
+    }, []) // Tom array - funktionen bliver kun oprettet én gang (medmindre afhængigheder ændres)
 
     // OPRET PRODUKT
     const createProduct = async (formData) => {
