@@ -25,32 +25,36 @@ const usefetchSubscribers = () => {
 
     
     // OPRET SUBSCRIBERS
-    const createSubscriber = async (formData) => {
+    const createSubscriber = async (email) => {
         try {
-            const response = await fetch("http://localhost:3042/subscriber", {
-                method: "POST",
+            const response = await fetch('http://localhost:3042/subscribers', {
+                method: 'POST',
                 headers: {
-                    Authorization: `Bearer ${token}`,
+                    'Content-Type': 'application/json',
                 },
-                body: formData,
+                body: JSON.stringify({ email }), // Send raw JSON
             })
+    
             if (!response.ok) {
-                throw new Error("Fejl ved oprettelse af hold") 
+                const errorData = await response.json()
+                throw new Error(errorData.error || 'Failed to create subscriber')
             }
-
-            const result = await response.json()
-            return result
+    
+            const data = await response.json()
+            console.log('Subscriber created:', data)
+            return data
         } catch (error) {
-            console.error("Fejl ved oprettelse:", error)
-            throw error 
+            console.error('Error creating subscriber:', error.message)
+            throw error
         }
     }
+    
 
 
     // OPDATER SUBSCRIBERS
     const updateSubscriber = async (formData) => {
         try {
-            const response = await fetch("http://localhost:3042/subscriber", {
+            const response = await fetch("http://localhost:3042/subscription", {
                 method: "PUT",
                 headers: {
                     Authorization: `Bearer ${token}`, 
@@ -73,7 +77,7 @@ const usefetchSubscribers = () => {
     const deleteSubscriber = async (params) => {
         
         try {
-            await fetch(`http://localhost:3042/subscriber/${params}`, {
+            await fetch(`http://localhost:3042/subscription/${params}`, {
                 method: "DELETE",
                 headers: {
                     Authorization: `Bearer ${token}`,
@@ -94,7 +98,7 @@ const usefetchSubscribers = () => {
         setIsLoading(true)
     
         try {
-            const response = await fetch(`http://localhost:3042/subscriber/${id}`)
+            const response = await fetch(`http://localhost:3042/subscription/${id}`)
     
             if (!response.ok) {
                 const errorText = await response.text()

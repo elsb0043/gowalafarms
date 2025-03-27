@@ -1,33 +1,36 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import styles from './news.module.css'
 
 function Newsletter() {
-    // State til at gemme den indtastede email
-    const [email, setEmail] = useState('')
-    
-    // State til at holde styr på om formularen er indsendt
-    const [isSubmitted, setIsSubmitted] = useState(false)
+    const [email, setEmail] = useState('') // State til at gemme den indtastede e-mail
+    const [isSubmitted, setIsSubmitted] = useState(false) // State til at spore, om formularen er indsendt
 
-    // useEffect hook der kører når komponenten monteres
-    // Tjekker om der allerede er gemt en email i localStorage
-    useEffect(() => {
-        const savedEmail = localStorage.getItem('subscribedEmail')
-        
-        // Hvis der allerede er gemt en email, opdaterer vi tilstanden til 'submitted'
-        if (savedEmail) {
-            setIsSubmitted(true) // Sætter formularen til at vise 'tak for tilmeldingen'
+    // Funktion til at håndtere formularindsendelse
+    const handleSubmit = async (e) => {
+        e.preventDefault() // Undgå sideopdatering
+
+        // API-kald for at tilføje subscriber (forudsat at din API er tilgængelig på /subscription endpoint)
+        try {
+            const response = await fetch('http://localhost:3042/subscription', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email }),
+            })
+
+            // Tjek, om svaret var vellykket
+            if (!response.ok) {
+                throw new Error('Failed to subscribe')
+            }
+
+            // Hvis det lykkes, skal du opdatere tilstanden og vise succesmeddelelsen
+            setIsSubmitted(true)
+        } catch (error) {
+            // Hvis der var en fejl, skal du logge den på konsollen og vise en fejlmeddelelse
+            console.error('Error subscribing:', error)
+            setIsSubmitted(false) // Bliv på subscription, hvis det mislykkedes
         }
-    }, []) // Tom array betyder, at denne effekt kun kører én gang ved komponentens første rendering
-
-    // Håndterer formularens submit event
-    const handleSubmit = (e) => {
-        e.preventDefault() // Forhindrer formularen i at opdatere siden
-
-        // Gemmer den indtastede email i localStorage
-        localStorage.setItem('subscribedEmail', email)
-
-        // Opdaterer tilstanden så formularen viser 'Tak for tilmeldingen'
-        setIsSubmitted(true)
     }
 
     return (
@@ -41,15 +44,13 @@ function Newsletter() {
                         <p>Tilmeld dig vores nyhedsbrev - så kan du altid følge med i, hvad der sker på farmen.</p>
                     </div>
                     <form onSubmit={handleSubmit}>
-                        {/* Inputfelt til e-mail */}
                         <input
-                            required // Kræver, at brugeren indtaster en email
-                            type="email" // HTML5 e-mail inputtype som validere emailformatet
+                            required
+                            type="email" 
                             placeholder="Din email"
                             value={email}
-                            onChange={(e) => setEmail(e.target.value)} // Opdaterer email state ved ændring
+                            onChange={(e) => setEmail(e.target.value)} // Opdater e-mail-tilstanden ved inputændring
                         />
-                        {/* Submit button */}
                         <button type="submit">Tilmeld</button>
                     </form>
                 </div>
